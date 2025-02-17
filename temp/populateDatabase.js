@@ -11,10 +11,6 @@ const client = new Client()
 
 const databases = new Databases(client);
 
-
-
-
-
 async function createDocument(itemArray){
     const promise = await databases.createDocument(
         DATABASE_ID,

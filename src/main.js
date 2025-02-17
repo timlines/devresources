@@ -13,19 +13,24 @@ let myQuery = await databases.listDocuments(
   DATABASE_ID,
   COLLECTION_ID,
   [
-    Query.equal('category', ['Learning Resources'])
+    Query.equal('category', 'Learning Resources')
   ]
 );
 
 
 // Add all the resources to the results page
 async function addResourcesToDom(){
-  document.querySelector('ul').innerHTML = '<li>1</li>'
+  document.querySelector('ul').innerHTML = ''
+  let response = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTION_ID
+  );
+
+  console.log(response);
   
-
+  response.documents.forEach((resource)=>{
+    const li = document.createElement('li')
+    li.textContent = ` ${resource['category']} `
+  })
 }
-
-
-
-console.log(myVar);
 
