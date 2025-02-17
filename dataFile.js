@@ -1,5 +1,6 @@
 
-let bigBoy = [
+
+export const bigBoy = [
     //batch 1
     ["Learning Resources", "BookBank", "https://github.com/ajitpal/BookBank"],
     ["Software Best Practices", "Heroku Alternatives", "herokuAlternatives"],
