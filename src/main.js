@@ -1,16 +1,17 @@
 import './style.css'
+import { PROJECT_ID, DATABASE_ID, COLLECTION_ID } from './keys.env';
 
 import { Client, Databases, ID } from "appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('67b2c60e000bb8e6847b');
+    .setProject(PROJECT_ID);
 
 const databases = new Databases(client);
 
 const promise = databases.createDocument(
-    '67b2c632000f6037bc0a',
-    '67b2c67b0004f0872d83',
+  DATABASE_ID,
+  COLLECTION_ID,
     ID.unique(),
     { "title": "Hamlet" }
 );
