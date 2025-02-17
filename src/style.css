@@ -1,9 +1,11 @@
+/* style.css */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -25,22 +27,13 @@ a:hover {
 
 body {
   margin: 0;
-  /* display: flex; */
-  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
 
-/* ----------------------------------------------------------------------------- */
-
-/* style.css */
-* {
-  text-decoration: none;
-}
-
-#image {
-  height: 50px;
-  padding: 50px; /* Adjust later */
+h1 {
+  padding: 25px;
+  font-size: 42px;
 }
 
 .header-container {
@@ -88,29 +81,28 @@ main {
 
 /* Search Input Section styling */
 .search-input-section {
-  border: 1px solid rgb(200, 200, 200);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 40vw;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #585858;
   margin-top: -20px;
   margin-bottom: 30px;
   border-radius: 30px;
   padding: 5px 10px;
   height: 37px;
-  box-shadow: 0 4px 3px rgba(197, 197, 197, 0.3);
-}
-
-.mic-icon {
-  height: 30px;
 }
 
 .search-input {
   border: none;
   font-size: 20px;
   width: 100%;
+  background-color: #585858;
+  color: whitesmoke;
+  caret-color: whitesmoke;
+  
+
 }
 
 .search-input:focus {
@@ -138,18 +130,18 @@ main {
 
 .search-btn {
   font-size: 1rem;
-  color: black;
+  color: whitesmoke;
   font-weight: 100;
   padding: 10px 20px;
-  background-color: grey;
+  background-color: rgb(49, 49, 49);
   border: none;
+  border-radius: 5px;
 }
 
 .search-btn:hover{
-  border: 1px solid rgb(214, 214, 214);
-  box-shadow: 0 2px 2px rgba(162, 162, 162, 0.3);
   background-color: whitesmoke;
   border-radius: 5px;
+  color: black;
 }
 
 .customize_size {
