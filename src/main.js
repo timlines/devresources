@@ -1,3 +1,4 @@
+import './style.css'
 
 import { PROJECT_ID, DATABASE_ID, COLLECTION_ID } from './keys.js';
 
@@ -9,7 +10,7 @@ const client = new Client()
 
 const databases = new Databases(client);
 
-let myQuery = await databases.listDocuments(
+let learningResourcesQuery = await databases.listDocuments(
   DATABASE_ID,
   COLLECTION_ID,
   [
@@ -17,29 +18,59 @@ let myQuery = await databases.listDocuments(
   ]
 );
 
+let softwareBestPractices = await databases.listDocuments(
+  DATABASE_ID,
+  COLLECTION_ID,
+  [
+    Query.equal('category', 'Software Best Practices')
+  ]
+);
+
+let webDesign = await databases.listDocuments(
+  DATABASE_ID,
+  COLLECTION_ID,
+  [
+    Query.equal('category', 'Web Design')
+  ]
+);
+
+let careerDevelopment = await databases.listDocuments(
+  DATABASE_ID,
+  COLLECTION_ID,
+  [
+    Query.equal('category', 'Career Development & Productivity')
+  ]
+);
+let interactiveLearningTools = await databases.listDocuments(
+  DATABASE_ID,
+  COLLECTION_ID,
+  [
+    Query.equal('category', 'Interactive Learning & Tools')
+  ]
+);
+
+
+
 function generateItemList(query){
   let str = ``
 
   for(let element of query['documents']){
     str += `
-    <li>${element['name']}</li>
+    <a href="${element['source']}" target="_blank"><li>${element['name']}</li>
     `
   }
 
   return str
-
-  console.log(response);
-  
-  response.documents.forEach((resource)=>{
-    const li = document.createElement('li')
-    li.textContent = ` ${resource['category']} `
-  })
 }
 
 // Add all the resources to the results page
-async function addResourcesToDom(query){
-  document.querySelector('ul').innerHTML = generateItemList(query)
+async function addResourcesToDom(query, div = '.search-results'){
+  document.querySelector(div).innerHTML = generateItemList(query)
 }
 
-addResourcesToDom(myQuery)
+addResourcesToDom(learningResourcesQuery, '.best-practices')
+addResourcesToDom(softwareBestPractices, '.learning-resources')
+addResourcesToDom(softwareBestPractices, '.web-design')
+addResourcesToDom(softwareBestPractices, '.career-development')
+addResourcesToDom(softwareBestPractices, '.interactive-learning-tools')
 
