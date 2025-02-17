@@ -1,24 +1,22 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import { Client, Databases, ID } from "appwrite";
 
-setupCounter(document.querySelector('#counter'))
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('67b2c60e000bb8e6847b');
+
+const databases = new Databases(client);
+
+const promise = databases.createDocument(
+    '67b2c632000f6037bc0a',
+    '67b2c67b0004f0872d83',
+    ID.unique(),
+    { "title": "Hamlet" }
+);
+
+promise.then(function (response) {
+    console.log(response);
+}, function (error) {
+    console.log(error);
+});
