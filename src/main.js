@@ -68,9 +68,27 @@ async function addResourcesToDom(query, div = '.search-results'){
   document.querySelector(div).innerHTML = generateItemList(query)
 }
 
+
+
 addResourcesToDom(learningResourcesQuery, '.best-practices')
 addResourcesToDom(softwareBestPractices, '.learning-resources')
 addResourcesToDom(softwareBestPractices, '.web-design')
 addResourcesToDom(softwareBestPractices, '.career-development')
 addResourcesToDom(softwareBestPractices, '.interactive-learning-tools')
+
+let coll = document.getElementsByClassName("collapsible");
+let i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    let content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
 
